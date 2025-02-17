@@ -1,36 +1,206 @@
 {
   "appTitle": "个人档案",
+  "@appTitle": {
+    "description": "The title of the application"
+  },
   "createProfile": "创建档案",
+  "@createProfile": {
+    "description": "Button text to create a new profile"
+  },
   "viewProfile": "查看档案",
+  "@viewProfile": {
+    "description": "Button text to view a profile"
+  },
   "editProfile": "编辑档案",
+  "@editProfile": {
+    "description": "Button text to edit a profile"
+  },
   "deleteProfile": "删除档案",
-  "profileId": "档案编号",
+  "@deleteProfile": {
+    "description": "Button text to delete a profile"
+  },
+  "profileId": "档案ID",
+  "@profileId": {
+    "description": "Label for profile ID field"
+  },
   "password": "密码",
-  "enterProfileId": "请输入档案编号",
-  "enterPassword": "请输入密码",
+  "@password": {
+    "description": "Label for password field"
+  },
+  "enterProfileId": "输入档案ID",
+  "@enterProfileId": {
+    "description": "Title for dialog to enter profile ID"
+  },
+  "enterPassword": "输入密码",
+  "@enterPassword": {
+    "description": "Title for dialog to enter password"
+  },
   "cancel": "取消",
+  "@cancel": {
+    "description": "Button text to cancel an action"
+  },
   "save": "保存",
+  "@save": {
+    "description": "Button text to save changes"
+  },
   "view": "查看",
+  "@view": {
+    "description": "Button text to view something"
+  },
   "edit": "编辑",
+  "@edit": {
+    "description": "Button text to edit something"
+  },
   "delete": "删除",
-  "requiredField": "此字段为必填",
-  "invalidIdLength": "编号长度必须在5到15个字符之间",
-  "invalidPasswordLength": "密码长度必须在5到15个字符之间",
-  "profileCreationFailed": "创建档案失败",
-  "profileNotFound": "找不到档案",
+  "@delete": {
+    "description": "Button text to delete something"
+  },
+  "requiredField": "此字段为必填项",
+  "@requiredField": {
+    "description": "Error message for required fields"
+  },
+  "invalidCredentials": "ID或密码无效",
+  "@invalidCredentials": {
+    "description": "Error message for invalid credentials"
+  },
+  "profileNotFound": "未找到档案",
+  "@profileNotFound": {
+    "description": "Error message when profile is not found"
+  },
+  "createFailed": "创建档案失败",
+  "@createFailed": {
+    "description": "Error message when profile creation fails"
+  },
   "updateFailed": "更新档案失败",
+  "@updateFailed": {
+    "description": "Error message when profile update fails"
+  },
   "deleteFailed": "删除档案失败",
+  "@deleteFailed": {
+    "description": "Error message when profile deletion fails"
+  },
   "sectionBasicInfo": "基本资料",
-  "sectionStrengths": "优点",
-  "sectionWeaknesses": "缺点",
-  "sectionLikes": "喜好",
-  "sectionDislikes": "不喜欢的事物",
-  "sectionShortTermGoals": "短期目标",
-  "sectionLongTermGoals": "长期目标",
-  "sectionFavoritePastimes": "喜爱的休闲活动",
-  "sectionFamilySituation": "家庭状况",
-  "sectionSocialRelationship": "社交关系",
+  "@sectionBasicInfo": {
+    "description": "Section title for basic information"
+  },
+  "sectionWorkExperience": "工作经验",
+  "@sectionWorkExperience": {
+    "description": "Section title for work experience"
+  },
+  "sectionEducation": "教育背景",
+  "@sectionEducation": {
+    "description": "Section title for education"
+  },
+  "sectionSkills": "技能专长",
+  "@sectionSkills": {
+    "description": "Section title for skills"
+  },
+  "sectionProjects": "项目经历",
+  "@sectionProjects": {
+    "description": "Section title for projects"
+  },
+  "sectionCertifications": "证书资质",
+  "@sectionCertifications": {
+    "description": "Section title for certifications"
+  },
+  "sectionLanguages": "语言能力",
+  "@sectionLanguages": {
+    "description": "Section title for languages"
+  },
+  "sectionVolunteerWork": "志愿服务",
+  "@sectionVolunteerWork": {
+    "description": "Section title for volunteer work"
+  },
+  "sectionAwards": "获奖荣誉",
+  "@sectionAwards": {
+    "description": "Section title for awards"
+  },
+  "sectionPublications": "出版作品",
+  "@sectionPublications": {
+    "description": "Section title for publications"
+  },
+  "sectionPatents": "专利发明",
+  "@sectionPatents": {
+    "description": "Section title for patents"
+  },
+  "sectionReferences": "推荐人",
+  "@sectionReferences": {
+    "description": "Section title for references"
+  },
+  "sectionPersonalInterests": "个人兴趣",
+  "@sectionPersonalInterests": {
+    "description": "Section title for personal interests"
+  },
+  "sectionSocialMedia": "社交媒体",
+  "@sectionSocialMedia": {
+    "description": "Section title for social media"
+  },
   "sectionFinancialSituation": "财务状况",
+  "@sectionFinancialSituation": {
+    "description": "Section title for financial situation"
+  },
   "sectionMentalConditions": "心理状况",
-  "sectionHealthConditions": "健康状况"
+  "@sectionMentalConditions": {
+    "description": "Section title for mental conditions"
+  },
+  "sectionHealthConditions": "健康状况",
+  "@sectionHealthConditions": {
+    "description": "Section title for health conditions"
+  },
+  "sectionStrengths": "优势",
+  "@sectionStrengths": {
+    "description": "Section title for personal strengths"
+  },
+  "sectionWeaknesses": "待改进",
+  "@sectionWeaknesses": {
+    "description": "Section title for personal weaknesses"
+  },
+  "sectionLikes": "喜好",
+  "@sectionLikes": {
+    "description": "Section title for things the person likes"
+  },
+  "sectionDislikes": "不喜欢",
+  "@sectionDislikes": {
+    "description": "Section title for things the person dislikes"
+  },
+  "sectionShortTermGoals": "短期目标",
+  "@sectionShortTermGoals": {
+    "description": "Section title for short-term goals"
+  },
+  "sectionLongTermGoals": "长期目标",
+  "@sectionLongTermGoals": {
+    "description": "Section title for long-term goals"
+  },
+  "sectionFavoritePastimes": "兴趣爱好",
+  "@sectionFavoritePastimes": {
+    "description": "Section title for favorite pastimes and hobbies"
+  },
+  "sectionFamilySituation": "家庭情况",
+  "@sectionFamilySituation": {
+    "description": "Section title for family situation"
+  },
+  "sectionSocialRelationship": "社交关系",
+  "@sectionSocialRelationship": {
+    "description": "Section title for social relationships"
+  },
+  "noSections": "没有可用的部分",
+  "@noSections": {
+    "description": "Message when no sections are available"
+  },
+  "deleteConfirmation": "确定要删除此档案吗？此操作无法撤销。",
+  "@deleteConfirmation": {
+    "description": "Confirmation message before deleting a profile"
+  },
+  "profileCreationFailed": "创建档案失败，请重试。",
+  "@profileCreationFailed": {
+    "description": "Error message shown when profile creation fails"
+  },
+  "invalidIdLength": "档案ID必须在5到15个字符之间",
+  "@invalidIdLength": {
+    "description": "Error message shown when profile ID length is invalid"
+  },
+  "invalidPasswordLength": "密码必须在5到15个字符之间",
+  "@invalidPasswordLength": {
+    "description": "Error message shown when password length is invalid"
+  }
 }

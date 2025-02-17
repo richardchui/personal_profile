@@ -1,36 +1,206 @@
 {
   "appTitle": "Personal Profile",
+  "@appTitle": {
+    "description": "The title of the application"
+  },
   "createProfile": "Create Profile",
+  "@createProfile": {
+    "description": "Button text to create a new profile"
+  },
   "viewProfile": "View Profile",
+  "@viewProfile": {
+    "description": "Button text to view a profile"
+  },
   "editProfile": "Edit Profile",
+  "@editProfile": {
+    "description": "Button text to edit a profile"
+  },
   "deleteProfile": "Delete Profile",
+  "@deleteProfile": {
+    "description": "Button text to delete a profile"
+  },
   "profileId": "Profile ID",
+  "@profileId": {
+    "description": "Label for profile ID field"
+  },
   "password": "Password",
+  "@password": {
+    "description": "Label for password field"
+  },
   "enterProfileId": "Enter Profile ID",
+  "@enterProfileId": {
+    "description": "Title for dialog to enter profile ID"
+  },
   "enterPassword": "Enter Password",
+  "@enterPassword": {
+    "description": "Title for dialog to enter password"
+  },
   "cancel": "Cancel",
+  "@cancel": {
+    "description": "Button text to cancel an action"
+  },
   "save": "Save",
+  "@save": {
+    "description": "Button text to save changes"
+  },
   "view": "View",
+  "@view": {
+    "description": "Button text to view something"
+  },
   "edit": "Edit",
+  "@edit": {
+    "description": "Button text to edit something"
+  },
   "delete": "Delete",
+  "@delete": {
+    "description": "Button text to delete something"
+  },
   "requiredField": "This field is required",
-  "invalidIdLength": "ID must be between 5 and 15 characters",
-  "invalidPasswordLength": "Password must be between 5 and 15 characters",
-  "profileCreationFailed": "Failed to create profile",
+  "@requiredField": {
+    "description": "Error message for required fields"
+  },
+  "invalidCredentials": "Invalid ID or password",
+  "@invalidCredentials": {
+    "description": "Error message for invalid credentials"
+  },
   "profileNotFound": "Profile not found",
+  "@profileNotFound": {
+    "description": "Error message when profile is not found"
+  },
+  "createFailed": "Failed to create profile",
+  "@createFailed": {
+    "description": "Error message when profile creation fails"
+  },
   "updateFailed": "Failed to update profile",
+  "@updateFailed": {
+    "description": "Error message when profile update fails"
+  },
   "deleteFailed": "Failed to delete profile",
+  "@deleteFailed": {
+    "description": "Error message when profile deletion fails"
+  },
   "sectionBasicInfo": "Basic Information",
-  "sectionStrengths": "Strengths",
-  "sectionWeaknesses": "Weaknesses",
-  "sectionLikes": "Likes",
-  "sectionDislikes": "Dislikes",
-  "sectionShortTermGoals": "Short Term Goals",
-  "sectionLongTermGoals": "Long Term Goals",
-  "sectionFavoritePastimes": "Favorite Past-times",
-  "sectionFamilySituation": "Family Situation",
-  "sectionSocialRelationship": "Social Relationship",
+  "@sectionBasicInfo": {
+    "description": "Section title for basic information"
+  },
+  "sectionWorkExperience": "Work Experience",
+  "@sectionWorkExperience": {
+    "description": "Section title for work experience"
+  },
+  "sectionEducation": "Education",
+  "@sectionEducation": {
+    "description": "Section title for education"
+  },
+  "sectionSkills": "Skills",
+  "@sectionSkills": {
+    "description": "Section title for skills"
+  },
+  "sectionProjects": "Projects",
+  "@sectionProjects": {
+    "description": "Section title for projects"
+  },
+  "sectionCertifications": "Certifications",
+  "@sectionCertifications": {
+    "description": "Section title for certifications"
+  },
+  "sectionLanguages": "Languages",
+  "@sectionLanguages": {
+    "description": "Section title for languages"
+  },
+  "sectionVolunteerWork": "Volunteer Work",
+  "@sectionVolunteerWork": {
+    "description": "Section title for volunteer work"
+  },
+  "sectionAwards": "Awards",
+  "@sectionAwards": {
+    "description": "Section title for awards"
+  },
+  "sectionPublications": "Publications",
+  "@sectionPublications": {
+    "description": "Section title for publications"
+  },
+  "sectionPatents": "Patents",
+  "@sectionPatents": {
+    "description": "Section title for patents"
+  },
+  "sectionReferences": "References",
+  "@sectionReferences": {
+    "description": "Section title for references"
+  },
+  "sectionPersonalInterests": "Personal Interests",
+  "@sectionPersonalInterests": {
+    "description": "Section title for personal interests"
+  },
+  "sectionSocialMedia": "Social Media",
+  "@sectionSocialMedia": {
+    "description": "Section title for social media"
+  },
   "sectionFinancialSituation": "Financial Situation",
+  "@sectionFinancialSituation": {
+    "description": "Section title for financial situation"
+  },
   "sectionMentalConditions": "Mental Conditions",
-  "sectionHealthConditions": "Health Conditions"
+  "@sectionMentalConditions": {
+    "description": "Section title for mental conditions"
+  },
+  "sectionHealthConditions": "Health Conditions",
+  "@sectionHealthConditions": {
+    "description": "Section title for health conditions"
+  },
+  "sectionStrengths": "Strengths",
+  "@sectionStrengths": {
+    "description": "Section title for personal strengths"
+  },
+  "sectionWeaknesses": "Weaknesses",
+  "@sectionWeaknesses": {
+    "description": "Section title for personal weaknesses"
+  },
+  "sectionLikes": "Likes",
+  "@sectionLikes": {
+    "description": "Section title for things the person likes"
+  },
+  "sectionDislikes": "Dislikes",
+  "@sectionDislikes": {
+    "description": "Section title for things the person dislikes"
+  },
+  "sectionShortTermGoals": "Short-term Goals",
+  "@sectionShortTermGoals": {
+    "description": "Section title for short-term goals"
+  },
+  "sectionLongTermGoals": "Long-term Goals",
+  "@sectionLongTermGoals": {
+    "description": "Section title for long-term goals"
+  },
+  "sectionFavoritePastimes": "Favorite Pastimes",
+  "@sectionFavoritePastimes": {
+    "description": "Section title for favorite pastimes and hobbies"
+  },
+  "sectionFamilySituation": "Family Situation",
+  "@sectionFamilySituation": {
+    "description": "Section title for family situation"
+  },
+  "sectionSocialRelationship": "Social Relationships",
+  "@sectionSocialRelationship": {
+    "description": "Section title for social relationships"
+  },
+  "noSections": "No sections available",
+  "@noSections": {
+    "description": "Message when no sections are available"
+  },
+  "deleteConfirmation": "Are you sure you want to delete this profile? This action cannot be undone.",
+  "@deleteConfirmation": {
+    "description": "Confirmation message for profile deletion"
+  },
+  "profileCreationFailed": "Failed to create profile. Please try again.",
+  "@profileCreationFailed": {
+    "description": "Error message shown when profile creation fails"
+  },
+  "invalidIdLength": "Profile ID must be between 5 and 15 characters",
+  "@invalidIdLength": {
+    "description": "Error message shown when profile ID length is invalid"
+  },
+  "invalidPasswordLength": "Password must be between 5 and 15 characters",
+  "@invalidPasswordLength": {
+    "description": "Error message shown when password length is invalid"
+  }
 }

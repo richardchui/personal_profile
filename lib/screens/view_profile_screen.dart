@@ -1,18 +1,17 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:go_router/go_router.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:go_router/go_router.dart';
 import 'package:personal_profile/models/profile.dart';
 import 'package:personal_profile/services/supabase_service.dart';
-import 'package:personal_profile/widgets/section_editor.dart';
+import 'package:personal_profile/widgets/common_app_bar.dart';
+import 'package:personal_profile/widgets/section_navigator.dart';
 
 class ViewProfileScreen extends StatefulWidget {
-  final String profileId;
+  final String id;
 
   const ViewProfileScreen({
     super.key,
-    required this.profileId,
+    required this.id,
   });
 
   @override
@@ -20,53 +19,70 @@ class ViewProfileScreen extends StatefulWidget {
 }
 
 class _ViewProfileScreenState extends State<ViewProfileScreen> {
-  final _sections = <Map<String, dynamic>>[];
   Profile? _profile;
-  bool _isLoading = true;
+  String? _error;
 
   @override
   void initState() {
     super.initState();
-    _loadData();
+    _loadProfile();
   }
 
-  Future<void> _loadData() async {
-    final String jsonString = await rootBundle.loadString('assets/sections.json');
-    final data = json.decode(jsonString);
-    _sections.addAll(List<Map<String, dynamic>>.from(data['sections']));
-
-    final service = SupabaseService();
-    final profile = await service.getProfile(widget.profileId);
-
-    setState(() {
-      _profile = profile;
-      _isLoading = false;
-    });
+  Future<void> _loadProfile() async {
+    try {
+      final profile = await SupabaseService().getProfile(widget.id);
+      if (mounted) {
+        setState(() {
+          _profile = profile;
+          if (profile == null) {
+            _error = AppLocalizations.of(context)!.profileNotFound;
+          }
+        });
+      }
+    } catch (e) {
+      if (mounted) {
+        setState(() {
+          _error = AppLocalizations.of(context)!.profileNotFound;
+        });
+      }
+    }
   }
 
-  Future<void> _showDeleteDialog() async {
+  Future<void> _updateProfile(Map<String, dynamic> sections) async {
+    try {
+      final success = await SupabaseService().updateProfile(
+        widget.id,
+        _profile!.password,
+        Profile(
+          id: widget.id,
+          password: _profile!.password,
+          sections: sections,
+        ),
+      );
+
+      if (!mounted) return;
+
+      if (!success) {
+        setState(() {
+          _error = AppLocalizations.of(context)!.updateFailed;
+        });
+      }
+    } catch (e) {
+      if (mounted) {
+        setState(() {
+          _error = AppLocalizations.of(context)!.updateFailed;
+        });
+      }
+    }
+  }
+
+  Future<void> _deleteProfile() async {
     final l10n = AppLocalizations.of(context)!;
-    final controller = TextEditingController();
-
-    final bool? shouldDelete = await showDialog<bool>(
+    final confirmed = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
         title: Text(l10n.deleteProfile),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(l10n.enterPassword),
-            const SizedBox(height: 16),
-            TextField(
-              controller: controller,
-              obscureText: true,
-              decoration: InputDecoration(
-                labelText: l10n.password,
-                border: const OutlineInputBorder(),
-              ),
-            ),
-          ],
-        ),
+        content: Text(l10n.deleteConfirmation),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context, false),
@@ -80,25 +96,27 @@ class _ViewProfileScreenState extends State<ViewProfileScreen> {
       ),
     );
 
-    if (shouldDelete == true && mounted) {
-      final service = SupabaseService();
-      final success = await service.deleteProfile(
-        widget.profileId,
-        controller.text,
-      );
+    if (confirmed != true) return;
 
+    try {
+      final success = await SupabaseService().deleteProfile(
+        widget.id,
+        _profile!.password,
+      );
       if (!mounted) return;
 
       if (success) {
         context.go('/');
       } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(l10n.deleteFailed),
-            backgroundColor: Colors.red,
-          ),
-        );
+        setState(() {
+          _error = AppLocalizations.of(context)!.deleteFailed;
+        });
       }
+    } catch (e) {
+      if (!mounted) return;
+      setState(() {
+        _error = AppLocalizations.of(context)!.deleteFailed;
+      });
     }
   }
 
@@ -106,48 +124,61 @@ class _ViewProfileScreenState extends State<ViewProfileScreen> {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
 
-    if (_isLoading) {
+    if (_error != null) {
+      return Scaffold(
+        appBar: const CommonAppBar(),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                _error!,
+                style: TextStyle(color: Theme.of(context).colorScheme.error),
+              ),
+              const SizedBox(height: 16),
+              ElevatedButton(
+                onPressed: () => context.go('/'),
+                child: Text(l10n.createProfile),
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+
+    if (_profile == null) {
       return const Scaffold(
+        appBar: CommonAppBar(),
         body: Center(
           child: CircularProgressIndicator(),
         ),
       );
     }
 
-    if (_profile == null) {
-      return Scaffold(
-        appBar: AppBar(
-          title: Text(l10n.viewProfile),
-        ),
-        body: Center(
-          child: Text(l10n.profileNotFound),
-        ),
-      );
-    }
-
     return Scaffold(
-      appBar: AppBar(
-        title: Text(l10n.viewProfile),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.edit),
-            onPressed: () => context.go('/edit/${widget.profileId}'),
+      appBar: CommonAppBar(
+        title: l10n.viewProfile,
+      ),
+      body: Column(
+        children: [
+          Expanded(
+            child: SectionNavigator(
+              sections: _profile!.sections,
+              onSectionsChanged: _updateProfile,
+            ),
           ),
-          IconButton(
-            icon: const Icon(Icons.delete),
-            onPressed: _showDeleteDialog,
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: ElevatedButton(
+              onPressed: _deleteProfile,
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Theme.of(context).colorScheme.error,
+                foregroundColor: Theme.of(context).colorScheme.onError,
+              ),
+              child: Text(l10n.deleteProfile),
+            ),
           ),
         ],
-      ),
-      body: ListView(
-        padding: const EdgeInsets.all(16.0),
-        children: _sections.map((section) {
-          return SectionEditor(
-            sectionId: section['id'],
-            content: _profile!.sections[section['id']] ?? '',
-            readOnly: true,
-          );
-        }).toList(),
       ),
     );
   }

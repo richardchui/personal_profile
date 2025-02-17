@@ -6,64 +6,84 @@
       "order": 1
     },
     {
-      "id": "strengths",
-      "titleKey": "section.strengths",
+      "id": "work_experience",
+      "titleKey": "section.work_experience",
       "order": 2
     },
     {
-      "id": "weaknesses",
-      "titleKey": "section.weaknesses",
+      "id": "education",
+      "titleKey": "section.education",
       "order": 3
     },
     {
-      "id": "likes",
-      "titleKey": "section.likes",
+      "id": "skills",
+      "titleKey": "section.skills",
       "order": 4
     },
     {
-      "id": "dislikes",
-      "titleKey": "section.dislikes",
+      "id": "projects",
+      "titleKey": "section.projects",
       "order": 5
     },
     {
-      "id": "short_term_goals",
-      "titleKey": "section.short_term_goals",
+      "id": "certifications",
+      "titleKey": "section.certifications",
       "order": 6
     },
     {
-      "id": "long_term_goals",
-      "titleKey": "section.long_term_goals",
+      "id": "languages",
+      "titleKey": "section.languages",
       "order": 7
     },
     {
-      "id": "favorite_pastimes",
-      "titleKey": "section.favorite_pastimes",
+      "id": "volunteer_work",
+      "titleKey": "section.volunteer_work",
       "order": 8
     },
     {
-      "id": "family_situation",
-      "titleKey": "section.family_situation",
+      "id": "awards",
+      "titleKey": "section.awards",
       "order": 9
     },
     {
-      "id": "social_relationship",
-      "titleKey": "section.social_relationship",
+      "id": "publications",
+      "titleKey": "section.publications",
       "order": 10
+    },
+    {
+      "id": "patents",
+      "titleKey": "section.patents",
+      "order": 11
+    },
+    {
+      "id": "references",
+      "titleKey": "section.references",
+      "order": 12
+    },
+    {
+      "id": "personal_interests",
+      "titleKey": "section.personal_interests",
+      "order": 13
+    },
+    {
+      "id": "social_media",
+      "titleKey": "section.social_media",
+      "order": 14
     },
     {
       "id": "financial_situation",
       "titleKey": "section.financial_situation",
-      "order": 11
+      "order": 15
     },
     {
       "id": "mental_conditions",
       "titleKey": "section.mental_conditions",
-      "order": 12
+      "order": 16
     },
     {
       "id": "health_conditions",
       "titleKey": "section.health_conditions",
-      "order": 13
+      "order": 17
     }
   ]
 }

@@ -6,6 +6,7 @@ import 'package:personal_profile/screens/view_profile_screen.dart';
 import 'package:personal_profile/screens/edit_profile_screen.dart';
 
 final router = GoRouter(
+  initialLocation: '/',
   routes: [
     GoRoute(
       path: '/',
@@ -18,13 +19,13 @@ final router = GoRouter(
     GoRoute(
       path: '/view/:id',
       builder: (context, state) => ViewProfileScreen(
-        profileId: state.pathParameters['id']!,
+        id: state.pathParameters['id']!,
       ),
     ),
     GoRoute(
       path: '/edit/:id',
       builder: (context, state) => EditProfileScreen(
-        profileId: state.pathParameters['id']!,
+        id: state.pathParameters['id']!,
       ),
     ),
   ],

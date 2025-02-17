@@ -1,36 +1,206 @@
 {
   "appTitle": "個人檔案",
-  "createProfile": "建立檔案",
+  "@appTitle": {
+    "description": "The title of the application"
+  },
+  "createProfile": "創建檔案",
+  "@createProfile": {
+    "description": "Button text to create a new profile"
+  },
   "viewProfile": "查看檔案",
+  "@viewProfile": {
+    "description": "Button text to view a profile"
+  },
   "editProfile": "編輯檔案",
+  "@editProfile": {
+    "description": "Button text to edit a profile"
+  },
   "deleteProfile": "刪除檔案",
-  "profileId": "檔案編號",
+  "@deleteProfile": {
+    "description": "Button text to delete a profile"
+  },
+  "profileId": "檔案ID",
+  "@profileId": {
+    "description": "Label for profile ID field"
+  },
   "password": "密碼",
-  "enterProfileId": "請輸入檔案編號",
-  "enterPassword": "請輸入密碼",
+  "@password": {
+    "description": "Label for password field"
+  },
+  "enterProfileId": "輸入檔案ID",
+  "@enterProfileId": {
+    "description": "Title for dialog to enter profile ID"
+  },
+  "enterPassword": "輸入密碼",
+  "@enterPassword": {
+    "description": "Title for dialog to enter password"
+  },
   "cancel": "取消",
-  "save": "儲存",
+  "@cancel": {
+    "description": "Button text to cancel an action"
+  },
+  "save": "保存",
+  "@save": {
+    "description": "Button text to save changes"
+  },
   "view": "查看",
+  "@view": {
+    "description": "Button text to view something"
+  },
   "edit": "編輯",
+  "@edit": {
+    "description": "Button text to edit something"
+  },
   "delete": "刪除",
-  "requiredField": "此欄位為必填",
-  "invalidIdLength": "編號長度必須在5到15個字元之間",
-  "invalidPasswordLength": "密碼長度必須在5到15個字元之間",
-  "profileCreationFailed": "建立檔案失敗",
-  "profileNotFound": "找不到檔案",
+  "@delete": {
+    "description": "Button text to delete something"
+  },
+  "requiredField": "此欄位為必填項",
+  "@requiredField": {
+    "description": "Error message for required fields"
+  },
+  "invalidCredentials": "ID或密碼無效",
+  "@invalidCredentials": {
+    "description": "Error message for invalid credentials"
+  },
+  "profileNotFound": "未找到檔案",
+  "@profileNotFound": {
+    "description": "Error message when profile is not found"
+  },
+  "createFailed": "創建檔案失敗",
+  "@createFailed": {
+    "description": "Error message when profile creation fails"
+  },
   "updateFailed": "更新檔案失敗",
+  "@updateFailed": {
+    "description": "Error message when profile update fails"
+  },
   "deleteFailed": "刪除檔案失敗",
+  "@deleteFailed": {
+    "description": "Error message when profile deletion fails"
+  },
   "sectionBasicInfo": "基本資料",
-  "sectionStrengths": "優點",
-  "sectionWeaknesses": "缺點",
-  "sectionLikes": "喜好",
-  "sectionDislikes": "不喜歡的事物",
-  "sectionShortTermGoals": "短期目標",
-  "sectionLongTermGoals": "長期目標",
-  "sectionFavoritePastimes": "喜愛的休閒活動",
-  "sectionFamilySituation": "家庭狀況",
-  "sectionSocialRelationship": "社交關係",
+  "@sectionBasicInfo": {
+    "description": "Section title for basic information"
+  },
+  "sectionWorkExperience": "工作經驗",
+  "@sectionWorkExperience": {
+    "description": "Section title for work experience"
+  },
+  "sectionEducation": "教育背景",
+  "@sectionEducation": {
+    "description": "Section title for education"
+  },
+  "sectionSkills": "技能專長",
+  "@sectionSkills": {
+    "description": "Section title for skills"
+  },
+  "sectionProjects": "項目經歷",
+  "@sectionProjects": {
+    "description": "Section title for projects"
+  },
+  "sectionCertifications": "證書資質",
+  "@sectionCertifications": {
+    "description": "Section title for certifications"
+  },
+  "sectionLanguages": "語言能力",
+  "@sectionLanguages": {
+    "description": "Section title for languages"
+  },
+  "sectionVolunteerWork": "志願服務",
+  "@sectionVolunteerWork": {
+    "description": "Section title for volunteer work"
+  },
+  "sectionAwards": "獲獎榮譽",
+  "@sectionAwards": {
+    "description": "Section title for awards"
+  },
+  "sectionPublications": "出版作品",
+  "@sectionPublications": {
+    "description": "Section title for publications"
+  },
+  "sectionPatents": "專利發明",
+  "@sectionPatents": {
+    "description": "Section title for patents"
+  },
+  "sectionReferences": "推薦人",
+  "@sectionReferences": {
+    "description": "Section title for references"
+  },
+  "sectionPersonalInterests": "個人興趣",
+  "@sectionPersonalInterests": {
+    "description": "Section title for personal interests"
+  },
+  "sectionSocialMedia": "社交媒體",
+  "@sectionSocialMedia": {
+    "description": "Section title for social media"
+  },
   "sectionFinancialSituation": "財務狀況",
+  "@sectionFinancialSituation": {
+    "description": "Section title for financial situation"
+  },
   "sectionMentalConditions": "心理狀況",
-  "sectionHealthConditions": "健康狀況"
+  "@sectionMentalConditions": {
+    "description": "Section title for mental conditions"
+  },
+  "sectionHealthConditions": "健康狀況",
+  "@sectionHealthConditions": {
+    "description": "Section title for health conditions"
+  },
+  "sectionStrengths": "優勢",
+  "@sectionStrengths": {
+    "description": "Section title for personal strengths"
+  },
+  "sectionWeaknesses": "待改進",
+  "@sectionWeaknesses": {
+    "description": "Section title for personal weaknesses"
+  },
+  "sectionLikes": "喜好",
+  "@sectionLikes": {
+    "description": "Section title for things the person likes"
+  },
+  "sectionDislikes": "不喜歡",
+  "@sectionDislikes": {
+    "description": "Section title for things the person dislikes"
+  },
+  "sectionShortTermGoals": "短期目標",
+  "@sectionShortTermGoals": {
+    "description": "Section title for short-term goals"
+  },
+  "sectionLongTermGoals": "長期目標",
+  "@sectionLongTermGoals": {
+    "description": "Section title for long-term goals"
+  },
+  "sectionFavoritePastimes": "興趣愛好",
+  "@sectionFavoritePastimes": {
+    "description": "Section title for favorite pastimes and hobbies"
+  },
+  "sectionFamilySituation": "家庭情況",
+  "@sectionFamilySituation": {
+    "description": "Section title for family situation"
+  },
+  "sectionSocialRelationship": "社交關係",
+  "@sectionSocialRelationship": {
+    "description": "Section title for social relationships"
+  },
+  "noSections": "沒有可用的部分",
+  "@noSections": {
+    "description": "Message when no sections are available"
+  },
+  "deleteConfirmation": "確定要刪除此檔案嗎？此操作無法撤銷。",
+  "@deleteConfirmation": {
+    "description": "Confirmation message before deleting a profile"
+  },
+  "profileCreationFailed": "創建檔案失敗，請重試。",
+  "@profileCreationFailed": {
+    "description": "Error message shown when profile creation fails"
+  },
+  "invalidIdLength": "檔案ID必須在5到15個字符之間",
+  "@invalidIdLength": {
+    "description": "Error message shown when profile ID length is invalid"
+  },
+  "invalidPasswordLength": "密碼必須在5到15個字符之間",
+  "@invalidPasswordLength": {
+    "description": "Error message shown when password length is invalid"
+  }
 }

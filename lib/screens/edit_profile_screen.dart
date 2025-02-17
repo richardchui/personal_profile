@@ -1,99 +1,120 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:personal_profile/models/profile.dart';
 import 'package:personal_profile/services/supabase_service.dart';
-import 'package:personal_profile/widgets/section_editor.dart';
+import 'package:personal_profile/widgets/section_navigator.dart';
 
 class EditProfileScreen extends StatefulWidget {
-  final String profileId;
+  final String id;
 
-  const EditProfileScreen({
-    super.key,
-    required this.profileId,
-  });
+  const EditProfileScreen({super.key, required this.id});
 
   @override
   State<EditProfileScreen> createState() => _EditProfileScreenState();
 }
 
 class _EditProfileScreenState extends State<EditProfileScreen> {
-  final _formKey = GlobalKey<FormState>();
-  final _passwordController = TextEditingController();
-  final _sections = <Map<String, dynamic>>[];
-  final _sectionData = <String, String>{};
+  Profile? _profile;
   bool _isLoading = true;
+  bool _isSaving = false;
 
   @override
   void initState() {
     super.initState();
-    _loadData();
+    _loadProfile();
   }
 
-  Future<void> _loadData() async {
-    final String jsonString = await rootBundle.loadString('assets/sections.json');
-    final data = json.decode(jsonString);
-    _sections.addAll(List<Map<String, dynamic>>.from(data['sections']));
-
+  Future<void> _loadProfile() async {
     final service = SupabaseService();
-    final profile = await service.getProfile(widget.profileId);
-
-    if (profile != null) {
-      setState(() {
-        _sectionData.addAll(profile.sections);
-      });
-    }
+    final profile = await service.getProfile(widget.id);
+    
+    if (!mounted) return;
 
     setState(() {
+      _profile = profile;
       _isLoading = false;
     });
+
+    if (profile == null) {
+      if (!mounted) return;
+      
+      final l10n = AppLocalizations.of(context)!;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(l10n.profileNotFound),
+          backgroundColor: Colors.red,
+        ),
+      );
+      context.go('/');
+    }
   }
 
   Future<void> _saveProfile() async {
-    if (!_formKey.currentState!.validate()) return;
+    if (_profile == null) return;
 
-    final profile = Profile(
-      id: widget.profileId,
-      sections: Map<String, String>.from(_sectionData),
-    );
+    setState(() => _isSaving = true);
 
     final service = SupabaseService();
     final success = await service.updateProfile(
-      widget.profileId,
-      _passwordController.text,
-      profile,
+      widget.id,
+      _profile!.password,
+      _profile!,
     );
 
     if (!mounted) return;
 
+    final l10n = AppLocalizations.of(context)!;
     if (success) {
-      context.go('/view/${widget.profileId}');
+      context.go('/view/${widget.id}');
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text(AppLocalizations.of(context)!.updateFailed),
+          content: Text(l10n.updateFailed),
           backgroundColor: Colors.red,
         ),
       );
     }
+
+    setState(() => _isSaving = false);
   }
 
-  @override
-  void dispose() {
-    _passwordController.dispose();
-    super.dispose();
+  void _updateSections(Map<String, dynamic> sections) {
+    setState(() {
+      _profile = _profile!.copyWith(sections: sections);
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
-
+    
     if (_isLoading) {
-      return const Scaffold(
-        body: Center(
+      return Scaffold(
+        appBar: AppBar(
+          title: Text(l10n.editProfile),
+          leading: IconButton(
+            icon: const Icon(Icons.home),
+            onPressed: () => context.go('/'),
+          ),
+        ),
+        body: const Center(
           child: CircularProgressIndicator(),
+        ),
+      );
+    }
+
+    if (_profile == null) {
+      return Scaffold(
+        appBar: AppBar(
+          title: Text(l10n.editProfile),
+          leading: IconButton(
+            icon: const Icon(Icons.home),
+            onPressed: () => context.go('/'),
+          ),
+        ),
+        body: Center(
+          child: Text(l10n.profileNotFound),
         ),
       );
     }
@@ -101,46 +122,20 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(l10n.editProfile),
-      ),
-      body: Form(
-        key: _formKey,
-        child: ListView(
-          padding: const EdgeInsets.all(16.0),
-          children: [
-            TextFormField(
-              controller: _passwordController,
-              decoration: InputDecoration(
-                labelText: l10n.password,
-                border: const OutlineInputBorder(),
-              ),
-              obscureText: true,
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return l10n.requiredField;
-                }
-                if (value.length < 5 || value.length > 15) {
-                  return l10n.invalidPasswordLength;
-                }
-                return null;
-              },
-            ),
-            const SizedBox(height: 16),
-            ..._sections.map((section) {
-              return SectionEditor(
-                sectionId: section['id'],
-                content: _sectionData[section['id']] ?? '',
-                onChanged: (value) {
-                  _sectionData[section['id']] = value;
-                },
-              );
-            }),
-            const SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: _saveProfile,
-              child: Text(l10n.save),
-            ),
-          ],
+        leading: IconButton(
+          icon: const Icon(Icons.home),
+          onPressed: () => context.go('/'),
         ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.save),
+            onPressed: _isSaving ? null : _saveProfile,
+          ),
+        ],
+      ),
+      body: SectionNavigator(
+        sections: _profile!.sections,
+        onSectionsChanged: _updateSections,
       ),
     );
   }

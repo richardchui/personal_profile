@@ -9,7 +9,7 @@ class SupabaseService {
       final result = await supabase.from('profiles').insert({
         'id': id,
         'password': password,
-        'data': profile.toJson(),
+        'data': profile.sections,
       }).select();
       return result.isNotEmpty;
     } catch (e) {
@@ -25,9 +25,27 @@ class SupabaseService {
           .eq('id', id)
           .single();
       
-      return Profile.fromJson(result['data']);
+      return Profile(
+        id: result['id'] as String,
+        password: result['password'] as String,
+        sections: Map<String, dynamic>.from(result['data'] as Map),
+      );
     } catch (e) {
       return null;
+    }
+  }
+
+  Future<bool> validateCredentials(String id, String password) async {
+    try {
+      final result = await supabase
+          .from('profiles')
+          .select()
+          .eq('id', id)
+          .eq('password', password)
+          .single();
+      return result != null;
+    } catch (e) {
+      return false;
     }
   }
 
@@ -35,7 +53,7 @@ class SupabaseService {
     try {
       final result = await supabase
           .from('profiles')
-          .update({'data': profile.toJson()})
+          .update({'data': profile.sections})
           .eq('id', id)
           .eq('password', password)
           .select();

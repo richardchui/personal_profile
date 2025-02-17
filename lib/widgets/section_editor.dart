@@ -1,19 +1,46 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class SectionEditor extends StatelessWidget {
+class SectionEditor extends StatefulWidget {
   final String sectionId;
   final String content;
-  final bool readOnly;
-  final ValueChanged<String>? onChanged;
+  final Function(String) onChanged;
+  final bool isEditable;
 
   const SectionEditor({
     super.key,
     required this.sectionId,
     required this.content,
-    this.readOnly = false,
-    this.onChanged,
+    required this.onChanged,
+    this.isEditable = true,
   });
+
+  @override
+  State<SectionEditor> createState() => _SectionEditorState();
+}
+
+class _SectionEditorState extends State<SectionEditor> {
+  late TextEditingController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = TextEditingController(text: widget.content);
+  }
+
+  @override
+  void didUpdateWidget(SectionEditor oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.content != widget.content) {
+      _controller.text = widget.content;
+    }
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   String _getSectionTitle(AppLocalizations l10n, String sectionId) {
     switch (sectionId) {
@@ -51,34 +78,33 @@ class SectionEditor extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
-    
-    return Card(
-      margin: const EdgeInsets.all(8.0),
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              _getSectionTitle(l10n, sectionId),
-              style: Theme.of(context).textTheme.titleMedium,
-            ),
-            const SizedBox(height: 8),
-            TextField(
-              controller: TextEditingController(text: content)
-                ..selection = TextSelection.fromPosition(
-                  TextPosition(offset: content.length),
-                ),
-              maxLines: null,
-              readOnly: readOnly,
+
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            _getSectionTitle(l10n, widget.sectionId),
+            style: Theme.of(context).textTheme.titleMedium,
+          ),
+          const SizedBox(height: 8),
+          Expanded(
+            child: TextField(
+              controller: _controller,
+              onChanged: widget.onChanged,
+              enabled: widget.isEditable,
+              maxLines: 5,
+              minLines: 5,
               decoration: InputDecoration(
                 border: const OutlineInputBorder(),
-                hintText: _getSectionTitle(l10n, sectionId),
+                hintText: _getSectionTitle(l10n, widget.sectionId),
+                filled: true,
+                fillColor: Colors.white,
               ),
-              onChanged: onChanged,
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
