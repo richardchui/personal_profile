@@ -1,0 +1,69 @@
+{
+  "sections": [
+    {
+      "id": "basic_info",
+      "titleKey": "section.basic_info",
+      "order": 1
+    },
+    {
+      "id": "strengths",
+      "titleKey": "section.strengths",
+      "order": 2
+    },
+    {
+      "id": "weaknesses",
+      "titleKey": "section.weaknesses",
+      "order": 3
+    },
+    {
+      "id": "likes",
+      "titleKey": "section.likes",
+      "order": 4
+    },
+    {
+      "id": "dislikes",
+      "titleKey": "section.dislikes",
+      "order": 5
+    },
+    {
+      "id": "short_term_goals",
+      "titleKey": "section.short_term_goals",
+      "order": 6
+    },
+    {
+      "id": "long_term_goals",
+      "titleKey": "section.long_term_goals",
+      "order": 7
+    },
+    {
+      "id": "favorite_pastimes",
+      "titleKey": "section.favorite_pastimes",
+      "order": 8
+    },
+    {
+      "id": "family_situation",
+      "titleKey": "section.family_situation",
+      "order": 9
+    },
+    {
+      "id": "social_relationship",
+      "titleKey": "section.social_relationship",
+      "order": 10
+    },
+    {
+      "id": "financial_situation",
+      "titleKey": "section.financial_situation",
+      "order": 11
+    },
+    {
+      "id": "mental_conditions",
+      "titleKey": "section.mental_conditions",
+      "order": 12
+    },
+    {
+      "id": "health_conditions",
+      "titleKey": "section.health_conditions",
+      "order": 13
+    }
+  ]
+}
