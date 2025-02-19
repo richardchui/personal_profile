@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:personal_profile/l10n/app_localizations.dart';
 import 'package:personal_profile/widgets/section_editor.dart';
 
 class SectionNavigator extends StatefulWidget {

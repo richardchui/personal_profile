@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:personal_profile/router.dart';
 
@@ -40,17 +40,8 @@ class MyApp extends StatelessWidget {
             useMaterial3: true,
           ),
           locale: localeProvider.currentLocale,
-          localizationsDelegates: const [
-            AppLocalizations.delegate,
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
-          ],
-          supportedLocales: const [
-            Locale('en'),
-            Locale('zh', 'CN'),
-            Locale('zh', 'TW'),
-          ],
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          supportedLocales: AppLocalizations.supportedLocales,
           routerConfig: router,
         );
       },
@@ -67,9 +58,8 @@ class LocaleProvider extends ChangeNotifier {
   Locale get currentLocale => _currentLocale;
 
   void setLocale(Locale locale) {
-    if (_currentLocale != locale) {
-      _currentLocale = locale;
-      notifyListeners();
-    }
+    if (!AppLocalizations.supportedLocales.contains(locale)) return;
+    _currentLocale = locale;
+    notifyListeners();
   }
 }
