@@ -27,7 +27,7 @@
   "@password": {
     "description": "Label for password field"
   },
-  "enterProfileId": "输入档案ID",
+  "enterProfileId": "输入个人资料ID",
   "@enterProfileId": {
     "description": "Title for dialog to enter profile ID"
   },
@@ -202,5 +202,13 @@
   "invalidPasswordLength": "密码必须在5到15个字符之间",
   "@invalidPasswordLength": {
     "description": "Error message shown when password length is invalid"
+  },
+  "errorProfileNotFound": "未找到个人资料",
+  "@errorProfileNotFound": {
+    "description": "Error message when profile is not found"
+  },
+  "errorGeneric": "发生错误，请重试。",
+  "@errorGeneric": {
+    "description": "Generic error message"
   }
 }

@@ -160,6 +160,12 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get invalidPasswordLength => '密码必须在5到15个字符之间';
+
+  @override
+  String get errorProfileNotFound => 'Profile not found';
+
+  @override
+  String get errorGeneric => 'An error occurred. Please try again.';
 }
 
 /// The translations for Chinese, as used in China (`zh_CN`).
@@ -188,7 +194,7 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
   String get password => '密码';
 
   @override
-  String get enterProfileId => '输入档案ID';
+  String get enterProfileId => '输入个人资料ID';
 
   @override
   String get enterPassword => '输入密码';
@@ -318,6 +324,12 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
 
   @override
   String get invalidPasswordLength => '密码必须在5到15个字符之间';
+
+  @override
+  String get errorProfileNotFound => '未找到个人资料';
+
+  @override
+  String get errorGeneric => '发生错误，请重试。';
 }
 
 /// The translations for Chinese, as used in Taiwan (`zh_TW`).
@@ -346,7 +358,7 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get password => '密碼';
 
   @override
-  String get enterProfileId => '輸入檔案ID';
+  String get enterProfileId => '輸入個人資料ID';
 
   @override
   String get enterPassword => '輸入密碼';
@@ -476,4 +488,10 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get invalidPasswordLength => '密碼必須在5到15個字符之間';
+
+  @override
+  String get errorProfileNotFound => '未找到個人資料';
+
+  @override
+  String get errorGeneric => '發生錯誤，請重試。';
 }

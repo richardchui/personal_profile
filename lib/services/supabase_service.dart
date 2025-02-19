@@ -19,19 +19,31 @@ class SupabaseService {
 
   Future<Profile?> getProfile(String id) async {
     try {
-      final result = await supabase
+      final response = await supabase
           .from('profiles')
           .select()
           .eq('id', id)
           .single();
-      
       return Profile(
-        id: result['id'] as String,
-        password: result['password'] as String,
-        sections: Map<String, dynamic>.from(result['data'] as Map),
+        id: response['id'] as String,
+        password: response['password'] as String,
+        sections: Map<String, dynamic>.from(response['data'] as Map),
       );
     } catch (e) {
       return null;
+    }
+  }
+
+  Future<bool> profileExists(String id) async {
+    try {
+      final response = await supabase
+          .from('profiles')
+          .select('id')
+          .eq('id', id)
+          .single();
+      return response != null;
+    } catch (e) {
+      return false;
     }
   }
 

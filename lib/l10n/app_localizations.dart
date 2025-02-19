@@ -139,7 +139,7 @@ abstract class AppLocalizations {
   /// **'Password'**
   String get password;
 
-  /// Title for dialog to enter profile ID
+  /// Button text to enter profile ID
   ///
   /// In en, this message translates to:
   /// **'Enter Profile ID'**
@@ -151,7 +151,7 @@ abstract class AppLocalizations {
   /// **'Enter Password'**
   String get enterPassword;
 
-  /// Button text to cancel an action
+  /// Text for cancel button
   ///
   /// In en, this message translates to:
   /// **'Cancel'**
@@ -402,6 +402,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Password must be between 5 and 15 characters'**
   String get invalidPasswordLength;
+
+  /// Error message shown when a profile is not found
+  ///
+  /// In en, this message translates to:
+  /// **'Profile not found'**
+  String get errorProfileNotFound;
+
+  /// Generic error message shown when something goes wrong
+  ///
+  /// In en, this message translates to:
+  /// **'An error occurred. Please try again.'**
+  String get errorGeneric;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

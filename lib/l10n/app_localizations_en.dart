@@ -160,4 +160,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get invalidPasswordLength => 'Password must be between 5 and 15 characters';
+
+  @override
+  String get errorProfileNotFound => 'Profile not found';
+
+  @override
+  String get errorGeneric => 'An error occurred. Please try again.';
 }

@@ -27,7 +27,7 @@
   "@password": {
     "description": "Label for password field"
   },
-  "enterProfileId": "輸入檔案ID",
+  "enterProfileId": "輸入個人資料ID",
   "@enterProfileId": {
     "description": "Title for dialog to enter profile ID"
   },
@@ -67,6 +67,10 @@
   "@profileNotFound": {
     "description": "Error message when profile is not found"
   },
+  "errorProfileNotFound": "未找到個人資料",
+  "@errorProfileNotFound": {
+    "description": "Error message for profile not found"
+  },
   "createFailed": "創建檔案失敗",
   "@createFailed": {
     "description": "Error message when profile creation fails"
@@ -78,6 +82,10 @@
   "deleteFailed": "刪除檔案失敗",
   "@deleteFailed": {
     "description": "Error message when profile deletion fails"
+  },
+  "errorGeneric": "發生錯誤，請重試。",
+  "@errorGeneric": {
+    "description": "Generic error message"
   },
   "sectionBasicInfo": "基本資料",
   "@sectionBasicInfo": {

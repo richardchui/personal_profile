@@ -29,7 +29,7 @@
   },
   "enterProfileId": "Enter Profile ID",
   "@enterProfileId": {
-    "description": "Title for dialog to enter profile ID"
+    "description": "Button text to enter profile ID"
   },
   "enterPassword": "Enter Password",
   "@enterPassword": {
@@ -37,7 +37,7 @@
   },
   "cancel": "Cancel",
   "@cancel": {
-    "description": "Button text to cancel an action"
+    "description": "Text for cancel button"
   },
   "save": "Save",
   "@save": {
@@ -202,5 +202,13 @@
   "invalidPasswordLength": "Password must be between 5 and 15 characters",
   "@invalidPasswordLength": {
     "description": "Error message shown when password length is invalid"
+  },
+  "errorProfileNotFound": "Profile not found",
+  "@errorProfileNotFound": {
+    "description": "Error message shown when a profile is not found"
+  },
+  "errorGeneric": "An error occurred. Please try again.",
+  "@errorGeneric": {
+    "description": "Generic error message shown when something goes wrong"
   }
 }
