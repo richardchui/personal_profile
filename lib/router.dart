@@ -5,6 +5,7 @@ import 'package:personal_profile/screens/create_profile_screen.dart';
 import 'package:personal_profile/screens/view_profile_screen.dart';
 import 'package:personal_profile/screens/edit_profile_screen.dart';
 import 'package:personal_profile/screens/enter_profile_id_screen.dart';
+import 'package:personal_profile/screens/enter_edit_id_screen.dart';
 
 final router = GoRouter(
   initialLocation: '/',
@@ -20,6 +21,10 @@ final router = GoRouter(
     GoRoute(
       path: '/enter-id',
       builder: (context, state) => const EnterProfileIdScreen(),
+    ),
+    GoRoute(
+      path: '/edit-id',
+      builder: (context, state) => const EnterEditIdScreen(),
     ),
     GoRoute(
       path: '/view/:id',

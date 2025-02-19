@@ -33,6 +33,14 @@ class HomeScreen extends StatelessWidget {
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
+                    onPressed: () => context.go('/edit-id'),
+                    child: Text(l10n.editProfile),
+                  ),
+                ),
+                const SizedBox(height: 16),
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
                     onPressed: () => context.go('/create'),
                     child: Text(l10n.createProfile),
                   ),
