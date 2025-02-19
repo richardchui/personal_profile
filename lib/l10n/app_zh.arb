@@ -27,6 +27,10 @@
   "@password": {
     "description": "Label for password field"
   },
+  "confirmPassword": "确认密码",
+  "@confirmPassword": {
+    "description": "Label for password confirmation field"
+  },
   "enterProfileId": "输入档案ID",
   "@enterProfileId": {
     "description": "Title for dialog to enter profile ID"
@@ -78,6 +82,10 @@
   "deleteFailed": "删除档案失败",
   "@deleteFailed": {
     "description": "Error message when profile deletion fails"
+  },
+  "passwordsDoNotMatch": "两次输入的密码不一致",
+  "@passwordsDoNotMatch": {
+    "description": "Error message when passwords do not match"
   },
   "sectionBasicInfo": "基本资料",
   "@sectionBasicInfo": {
@@ -202,5 +210,13 @@
   "invalidPasswordLength": "密码必须在5到15个字符之间",
   "@invalidPasswordLength": {
     "description": "Error message shown when password length is invalid"
+  },
+  "next": "下一步",
+  "@next": {
+    "description": "Button text to proceed to the next step"
+  },
+  "errorGeneric": "发生错误",
+  "@errorGeneric": {
+    "description": "Generic error message"
   }
 }

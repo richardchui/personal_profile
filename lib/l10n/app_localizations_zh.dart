@@ -30,6 +30,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get password => '密码';
 
   @override
+  String get confirmPassword => '确认密码';
+
+  @override
   String get enterProfileId => '输入档案ID';
 
   @override
@@ -67,6 +70,9 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get deleteFailed => '删除档案失败';
+
+  @override
+  String get passwordsDoNotMatch => '两次输入的密码不一致';
 
   @override
   String get sectionBasicInfo => '基本资料';
@@ -165,7 +171,20 @@ class AppLocalizationsZh extends AppLocalizations {
   String get errorProfileNotFound => 'Profile not found';
 
   @override
-  String get errorGeneric => 'An error occurred. Please try again.';
+  String get errorGeneric => '发生错误';
+
+  @override
+  String idLengthValidation(Object maxLength, Object minLength) {
+    return 'Profile ID must be between $minLength and $maxLength characters';
+  }
+
+  @override
+  String passwordLengthValidation(Object maxLength, Object minLength) {
+    return 'Password must be between $minLength and $maxLength characters';
+  }
+
+  @override
+  String get next => '下一步';
 }
 
 /// The translations for Chinese, as used in China (`zh_CN`).

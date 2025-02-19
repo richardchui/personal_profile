@@ -139,6 +139,12 @@ abstract class AppLocalizations {
   /// **'Password'**
   String get password;
 
+  /// Label for password confirmation field
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm Password'**
+  String get confirmPassword;
+
   /// Button text to enter profile ID
   ///
   /// In en, this message translates to:
@@ -216,6 +222,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Failed to delete profile'**
   String get deleteFailed;
+
+  /// Error message when passwords do not match
+  ///
+  /// In en, this message translates to:
+  /// **'Passwords do not match'**
+  String get passwordsDoNotMatch;
 
   /// Section title for basic information
   ///
@@ -394,7 +406,7 @@ abstract class AppLocalizations {
   /// Error message shown when profile ID length is invalid
   ///
   /// In en, this message translates to:
-  /// **'Profile ID must be between 5 and 15 characters'**
+  /// **'ID must be between 5 and 15 characters'**
   String get invalidIdLength;
 
   /// Error message shown when password length is invalid
@@ -414,6 +426,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'An error occurred. Please try again.'**
   String get errorGeneric;
+
+  /// Error message for profile ID length validation
+  ///
+  /// In en, this message translates to:
+  /// **'Profile ID must be between {minLength} and {maxLength} characters'**
+  String idLengthValidation(Object maxLength, Object minLength);
+
+  /// Error message for password length validation
+  ///
+  /// In en, this message translates to:
+  /// **'Password must be between {minLength} and {maxLength} characters'**
+  String passwordLengthValidation(Object maxLength, Object minLength);
+
+  /// Button text to proceed to the next step
+  ///
+  /// In en, this message translates to:
+  /// **'Next'**
+  String get next;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

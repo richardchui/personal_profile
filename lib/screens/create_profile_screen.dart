@@ -5,7 +5,6 @@ import 'package:go_router/go_router.dart';
 import 'package:personal_profile/l10n/app_localizations.dart';
 import 'package:personal_profile/models/profile.dart';
 import 'package:personal_profile/services/supabase_service.dart';
-import 'package:personal_profile/widgets/common_app_bar.dart';
 import 'package:personal_profile/widgets/section_navigator.dart';
 
 class CreateProfileScreen extends StatefulWidget {
@@ -16,10 +15,9 @@ class CreateProfileScreen extends StatefulWidget {
 }
 
 class _CreateProfileScreenState extends State<CreateProfileScreen> {
-  final _formKey = GlobalKey<FormState>();
   final _idController = TextEditingController();
   final _passwordController = TextEditingController();
-  Map<String, dynamic> _sections = {};
+  final _confirmPasswordController = TextEditingController();
   bool _isSaving = false;
   bool _isLoading = true;
 
@@ -31,28 +29,20 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
 
   Future<void> _loadSections() async {
     try {
-      debugPrint('Loading sections from assets...');
       final jsonString = await rootBundle.loadString('assets/sections.json');
-      debugPrint('Loaded JSON: $jsonString');
-      
       final data = json.decode(jsonString);
       final sections = List<Map<String, dynamic>>.from(data['sections']);
-      debugPrint('Parsed sections: $sections');
       
       final initialSections = <String, dynamic>{};
       for (final section in sections) {
         initialSections[section['id']] = '';
       }
-      debugPrint('Created initial sections: $initialSections');
 
       if (!mounted) return;
       setState(() {
-        _sections = initialSections;
         _isLoading = false;
       });
-    } catch (e, stackTrace) {
-      debugPrint('Error loading sections: $e');
-      debugPrint('Stack trace: $stackTrace');
+    } catch (e) {
       if (!mounted) return;
       setState(() {
         _isLoading = false;
@@ -60,15 +50,61 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
     }
   }
 
-  Future<void> _saveProfile() async {
-    if (!_formKey.currentState!.validate()) return;
+  Future<void> _validateAndSave() async {
+    final l10n = AppLocalizations.of(context)!;
+
+    // Check for empty fields
+    if (_idController.text.isEmpty ||
+        _passwordController.text.isEmpty ||
+        _confirmPasswordController.text.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(l10n.requiredField),
+          backgroundColor: Colors.red,
+        ),
+      );
+      return;
+    }
+
+    // Check ID length
+    if (_idController.text.length < 5 || _idController.text.length > 15) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(l10n.invalidIdLength),
+          backgroundColor: Colors.red,
+        ),
+      );
+      return;
+    }
+
+    // Check password length
+    if (_passwordController.text.length < 5 || _passwordController.text.length > 15) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(l10n.invalidPasswordLength),
+          backgroundColor: Colors.red,
+        ),
+      );
+      return;
+    }
+
+    // Check if passwords match
+    if (_passwordController.text != _confirmPasswordController.text) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(l10n.passwordsDoNotMatch),
+          backgroundColor: Colors.red,
+        ),
+      );
+      return;
+    }
 
     setState(() => _isSaving = true);
 
     final profile = Profile(
       id: _idController.text,
       password: _passwordController.text,
-      sections: Map<String, dynamic>.from(_sections),
+      sections: {},
     );
 
     final service = SupabaseService();
@@ -80,9 +116,15 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
 
     if (!mounted) return;
 
-    final l10n = AppLocalizations.of(context)!;
     if (success) {
-      context.go('/view/${_idController.text}');
+      final queryParams = {
+        'password': _passwordController.text,
+      };
+      final uri = Uri(
+        path: '/edit/${_idController.text}',
+        queryParameters: queryParams,
+      );
+      context.go(uri.toString());
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
@@ -95,97 +137,77 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
     setState(() => _isSaving = false);
   }
 
-  void _updateSections(Map<String, dynamic> newSections) {
-    setState(() {
-      _sections = newSections;
-    });
-  }
-
   @override
   void dispose() {
     _idController.dispose();
     _passwordController.dispose();
+    _confirmPasswordController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
-
+    
     if (_isLoading) {
-      return const Scaffold(
-        appBar: CommonAppBar(),
-        body: Center(
+      return Scaffold(
+        appBar: AppBar(
+          title: Text(l10n.createProfile),
+          leading: IconButton(
+            icon: const Icon(Icons.home),
+            onPressed: () => context.go('/'),
+          ),
+        ),
+        body: const Center(
           child: CircularProgressIndicator(),
         ),
       );
     }
 
     return Scaffold(
-      appBar: const CommonAppBar(),
-      body: Form(
-        key: _formKey,
+      appBar: AppBar(
+        title: Text(l10n.createProfile),
+        leading: IconButton(
+          icon: const Icon(Icons.home),
+          onPressed: () => context.go('/'),
+        ),
+      ),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(16.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                children: [
-                  TextFormField(
-                    controller: _idController,
-                    decoration: InputDecoration(
-                      labelText: l10n.profileId,
-                      border: const OutlineInputBorder(),
-                    ),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return l10n.requiredField;
-                      }
-                      if (value.length < 5 || value.length > 15) {
-                        return l10n.invalidIdLength;
-                      }
-                      return null;
-                    },
-                  ),
-                  const SizedBox(height: 16),
-                  TextFormField(
-                    controller: _passwordController,
-                    decoration: InputDecoration(
-                      labelText: l10n.password,
-                      border: const OutlineInputBorder(),
-                    ),
-                    obscureText: true,
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return l10n.requiredField;
-                      }
-                      if (value.length < 5 || value.length > 15) {
-                        return l10n.invalidPasswordLength;
-                      }
-                      return null;
-                    },
-                  ),
-                ],
+            TextField(
+              controller: _idController,
+              decoration: InputDecoration(
+                labelText: l10n.profileId,
+                border: const OutlineInputBorder(),
               ),
             ),
-            Expanded(
-              child: SectionNavigator(
-                sections: _sections,
-                onSectionsChanged: _updateSections,
+            const SizedBox(height: 16),
+            TextField(
+              controller: _passwordController,
+              decoration: InputDecoration(
+                labelText: l10n.password,
+                border: const OutlineInputBorder(),
               ),
+              obscureText: true,
             ),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: ElevatedButton(
-                onPressed: _isSaving ? null : _saveProfile,
-                child: _isSaving
-                    ? const SizedBox(
-                        width: 20,
-                        height: 20,
-                        child: CircularProgressIndicator(strokeWidth: 2),
-                      )
-                    : Text(l10n.save),
+            const SizedBox(height: 16),
+            TextField(
+              controller: _confirmPasswordController,
+              decoration: InputDecoration(
+                labelText: l10n.confirmPassword,
+                border: const OutlineInputBorder(),
               ),
+              obscureText: true,
+            ),
+            const SizedBox(height: 32),
+            ElevatedButton(
+              onPressed: _isSaving ? null : _validateAndSave,
+              child: _isSaving
+                  ? const CircularProgressIndicator()
+                  : Text(l10n.createProfile),
             ),
           ],
         ),

@@ -30,6 +30,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get password => 'Password';
 
   @override
+  String get confirmPassword => 'Confirm Password';
+
+  @override
   String get enterProfileId => 'Enter Profile ID';
 
   @override
@@ -67,6 +70,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get deleteFailed => 'Failed to delete profile';
+
+  @override
+  String get passwordsDoNotMatch => 'Passwords do not match';
 
   @override
   String get sectionBasicInfo => 'Basic Information';
@@ -156,7 +162,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get profileCreationFailed => 'Failed to create profile. Please try again.';
 
   @override
-  String get invalidIdLength => 'Profile ID must be between 5 and 15 characters';
+  String get invalidIdLength => 'ID must be between 5 and 15 characters';
 
   @override
   String get invalidPasswordLength => 'Password must be between 5 and 15 characters';
@@ -166,4 +172,17 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get errorGeneric => 'An error occurred. Please try again.';
+
+  @override
+  String idLengthValidation(Object maxLength, Object minLength) {
+    return 'Profile ID must be between $minLength and $maxLength characters';
+  }
+
+  @override
+  String passwordLengthValidation(Object maxLength, Object minLength) {
+    return 'Password must be between $minLength and $maxLength characters';
+  }
+
+  @override
+  String get next => 'Next';
 }

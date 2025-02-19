@@ -27,6 +27,10 @@
   "@password": {
     "description": "Label for password field"
   },
+  "confirmPassword": "Confirm Password",
+  "@confirmPassword": {
+    "description": "Label for password confirmation field"
+  },
   "enterProfileId": "Enter Profile ID",
   "@enterProfileId": {
     "description": "Button text to enter profile ID"
@@ -78,6 +82,10 @@
   "deleteFailed": "Failed to delete profile",
   "@deleteFailed": {
     "description": "Error message when profile deletion fails"
+  },
+  "passwordsDoNotMatch": "Passwords do not match",
+  "@passwordsDoNotMatch": {
+    "description": "Error message when passwords do not match"
   },
   "sectionBasicInfo": "Basic Information",
   "@sectionBasicInfo": {
@@ -195,7 +203,7 @@
   "@profileCreationFailed": {
     "description": "Error message shown when profile creation fails"
   },
-  "invalidIdLength": "Profile ID must be between 5 and 15 characters",
+  "invalidIdLength": "ID must be between 5 and 15 characters",
   "@invalidIdLength": {
     "description": "Error message shown when profile ID length is invalid"
   },
@@ -210,5 +218,17 @@
   "errorGeneric": "An error occurred. Please try again.",
   "@errorGeneric": {
     "description": "Generic error message shown when something goes wrong"
+  },
+  "idLengthValidation": "Profile ID must be between {minLength} and {maxLength} characters",
+  "@idLengthValidation": {
+    "description": "Error message for profile ID length validation"
+  },
+  "passwordLengthValidation": "Password must be between {minLength} and {maxLength} characters",
+  "@passwordLengthValidation": {
+    "description": "Error message for password length validation"
+  },
+  "next": "Next",
+  "@next": {
+    "description": "Button text to proceed to the next step"
   }
 }
