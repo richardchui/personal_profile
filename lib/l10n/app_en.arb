@@ -19,6 +19,10 @@
   "@deleteProfile": {
     "description": "Button text to delete a profile"
   },
+  "duplicateProfile": "Duplicate Profile",
+  "@duplicateProfile": {
+    "description": "Button text to duplicate a profile"
+  },
   "profileId": "Profile ID",
   "@profileId": {
     "description": "Label for profile ID field"
@@ -199,6 +203,46 @@
   "@deleteConfirmation": {
     "description": "Confirmation message for profile deletion"
   },
+  "duplicateProfileTitle": "Duplicate Profile",
+  "@duplicateProfileTitle": {
+    "description": "Title for duplicate profile dialog"
+  },
+  "duplicateProfilePrompt": "Enter a new profile ID and password for the duplicated profile. All section content will be copied, but contributor tokens and third-party contributions will not be copied.",
+  "@duplicateProfilePrompt": {
+    "description": "Explanation message for profile duplication dialog"
+  },
+  "newProfileId": "New Profile ID",
+  "@newProfileId": {
+    "description": "Label for new profile ID field when duplicating"
+  },
+  "newPassword": "New Password",
+  "@newPassword": {
+    "description": "Label for new password field when duplicating"
+  },
+  "confirmNewPassword": "Confirm New Password",
+  "@confirmNewPassword": {
+    "description": "Label for confirm new password field when duplicating"
+  },
+  "duplicate": "Duplicate",
+  "@duplicate": {
+    "description": "Button text to confirm duplication"
+  },
+  "duplicateSuccess": "Profile duplicated successfully!",
+  "@duplicateSuccess": {
+    "description": "Success message shown when profile is duplicated"
+  },
+  "duplicateFailed": "Failed to duplicate profile. Please try again.",
+  "@duplicateFailed": {
+    "description": "Error message shown when profile duplication fails"
+  },
+  "sameProfileIdError": "New profile ID cannot be the same as the original profile ID",
+  "@sameProfileIdError": {
+    "description": "Error message when new profile ID matches original"
+  },
+  "goToNewProfile": "Go to New Profile",
+  "@goToNewProfile": {
+    "description": "Button text to navigate to newly duplicated profile"
+  },
   "profileCreationFailed": "Failed to create profile. Please try again.",
   "@profileCreationFailed": {
     "description": "Error message shown when profile creation fails"
@@ -230,5 +274,37 @@
   "next": "Next",
   "@next": {
     "description": "Button text to proceed to the next step"
+  },
+  "privacyNoticeTitle": "Privacy Notice",
+  "@privacyNoticeTitle": {
+    "description": "Title for privacy warning about profile ID"
+  },
+  "profileIdPrivacyWarning": "Choose a profile ID that does not reveal your real identity. Avoid using your name, birthdate, email, phone number, or other personally identifiable information. This ID will be visible when sharing your profile.",
+  "@profileIdPrivacyWarning": {
+    "description": "Warning message about choosing a privacy-safe profile ID"
+  },
+  "privacyRiskLow": "Privacy Risk: Low",
+  "@privacyRiskLow": {
+    "description": "Label for low privacy risk level"
+  },
+  "privacyRiskMedium": "Privacy Risk: Medium",
+  "@privacyRiskMedium": {
+    "description": "Label for medium privacy risk level"
+  },
+  "privacyRiskHigh": "Privacy Risk: High",
+  "@privacyRiskHigh": {
+    "description": "Label for high privacy risk level"
+  },
+  "privacyRiskLowMessage": "Good choice! This ID looks privacy-safe.",
+  "@privacyRiskLowMessage": {
+    "description": "Message shown when profile ID has low privacy risk"
+  },
+  "privacyRiskMediumMessage": "This ID may contain identifying patterns. Consider using a more random combination.",
+  "@privacyRiskMediumMessage": {
+    "description": "Message shown when profile ID has medium privacy risk"
+  },
+  "privacyRiskHighMessage": "Warning: This ID appears to contain personal information. Choose a more private ID to protect your identity.",
+  "@privacyRiskHighMessage": {
+    "description": "Message shown when profile ID has high privacy risk"
   }
 }
